@@ -15,11 +15,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class ManHinhChaoActivity extends AppCompatActivity {
 
-    static boolean flag = true;
+    static boolean flag = false;
     Button buttonBatDau;
     ImageView imgThoatApp;
     ImageView imgLoa, imgLogo;
-    private MediaPlayer mediaPlayer;
+    public static MediaPlayer mediaPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
