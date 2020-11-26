@@ -18,7 +18,7 @@ public class ManHinhChinhActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_man_hinh_chinh);
         //Ánh xạ
-
+        ManHinhChaoActivity.mediaPlayer.start();
         imgHome = findViewById(R.id.imgHome);
         imgLoaManHinhChinh = findViewById(R.id.imgLoaMHChinh);
         frameLayoutCongTru = findViewById(R.id.frameLOCongtru);
@@ -44,6 +44,7 @@ public class ManHinhChinhActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intentHome = new Intent(ManHinhChinhActivity.this, ManHinhChaoActivity.class);
+                ManHinhChaoActivity.mediaPlayer.pause();
                 startActivity(intentHome);
             }
         });

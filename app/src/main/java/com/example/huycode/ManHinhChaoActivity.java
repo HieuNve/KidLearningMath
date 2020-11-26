@@ -14,7 +14,6 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class ManHinhChaoActivity extends AppCompatActivity {
-
     static boolean flag = false;
     Button buttonBatDau;
     ImageView imgThoatApp;
@@ -35,6 +34,7 @@ public class ManHinhChaoActivity extends AppCompatActivity {
         mediaPlayer = MediaPlayer.create(this, R.raw.nhacnen);
         imgThoatApp = findViewById(R.id.imgThoatMHChao);
         buttonBatDau = findViewById(R.id.btnBatDau);
+        mediaPlayer.start();
         //Chuyển màn hình
         imgLoa.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,6 +54,7 @@ public class ManHinhChaoActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ManHinhChaoActivity.this, ManHinhChinhActivity.class);
+                mediaPlayer.pause();
                 startActivity(intent);
             }
         });
