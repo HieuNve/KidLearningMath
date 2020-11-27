@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class ManHinhChinhActivity extends AppCompatActivity {
-    ImageView imgHome, imgThoatApp,imgLoaManHinhChinh;
+    ImageView imgHome,imgLoaManHinhChinh;
     FrameLayout frameLayoutCongTru, frameLayoutDoVui, frameLayoutTapDem, frameLayoutGiaiTri;
     static boolean flag = false;
     @Override
@@ -68,6 +68,7 @@ public class ManHinhChinhActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intentCongTru = new Intent(ManHinhChinhActivity.this, TapDemActivity.class);
+                ManHinhChaoActivity.mediaPlayer.pause();
                 startActivity(intentCongTru);
             }
         });
