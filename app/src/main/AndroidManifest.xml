@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.huycode">
+    package="com.kml.KidsMathLearning">
 
     <application
         android:allowBackup="true"
@@ -10,31 +10,31 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Huycode">
         <activity
-            android:name=".MHChinhGameActivity"
+            android:name="com.kml.KidsMathLearning.MHChinhGameActivity"
             android:screenOrientation="landscape"></activity>
         <activity
-            android:name=".MHChaoGameActivity"
+            android:name="com.kml.KidsMathLearning.MHChaoGameActivity"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".TapDemActivity"
+            android:name="com.kml.KidsMathLearning.TapDemActivity"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".DoVuiActivity"
+            android:name="com.kml.KidsMathLearning.DoVuiActivity"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".PhepTruActivity"
+            android:name="com.kml.KidsMathLearning.PhepTruActivity"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".PhepCongActivity"
+            android:name="com.kml.KidsMathLearning.PhepCongActivity"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".CongTruActivity"
+            android:name="com.kml.KidsMathLearning.CongTruActivity"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".ManHinhChinhActivity"
+            android:name="com.kml.KidsMathLearning.ManHinhChinhActivity"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".ManHinhChaoActivity"
+            android:name="com.kml.KidsMathLearning.ManHinhChaoActivity"
             android:screenOrientation="landscape"
 
             >

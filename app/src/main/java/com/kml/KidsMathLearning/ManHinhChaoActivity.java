@@ -1,4 +1,4 @@
-package com.example.huycode;
+package com.kml.KidsMathLearning;
 
 import android.content.DialogInterface;
 import android.content.Intent;
