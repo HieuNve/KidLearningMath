@@ -44,7 +44,6 @@ public class TapDemActivity extends AppCompatActivity {
         imgSo8 = findViewById(R.id.imgSo8TapDem);
         imgSo9 = findViewById(R.id.imgSo9TapDem);
         imgSo0 = findViewById(R.id.imgSo0TapDem);
-
         mediaPlayer = MediaPlayer.create(this, R.raw.amthanhso1);
         mediaPlayer2 = MediaPlayer.create(this, R.raw.amthanhso2);
         mediaPlayer3 = MediaPlayer.create(this, R.raw.amthanhso3);
