@@ -13,7 +13,7 @@
         android:layout_height="130dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:src="@drawable/so0"
+        android:src="@drawable/so1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.202"
@@ -41,7 +41,7 @@
         android:layout_height="130dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:src="@drawable/so0"
+        android:src="@drawable/so1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.567"
@@ -157,7 +157,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
-        android:id="@+id/imgLoaMHChinh"
+        android:id="@+id/imgLoaPhepCong"
         android:layout_width="55dp"
         android:layout_height="55dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -175,7 +175,7 @@
         android:layout_gravity="bottom|center"
         android:layout_marginTop="16dp"
         android:fontFamily="sans-serif-medium"
-        android:text="Câu 1/10"
+        android:text="Câu 1/15"
         android:textColor="#2C80A5"
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"

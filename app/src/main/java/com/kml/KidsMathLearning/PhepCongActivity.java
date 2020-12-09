@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -19,13 +20,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.Random;
 
 public class PhepCongActivity extends AppCompatActivity {
-
+    ImageView imgLoa;
     ImageView imageViewQuayLai, imgDA1, imgs1, imgs2, imgDA2, imgDA3, imgDamMay1, imgDamMay2, imgDamMay3;
     int i = 1;
-    int Tong;
+    int Tong =2;
     int dung;
     int sai;
     TextView tvphepcong;
+    static boolean flag = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,12 +44,25 @@ public class PhepCongActivity extends AppCompatActivity {
         imgDamMay2 = findViewById(R.id.imgDamMay2);
         imgDamMay3 = findViewById(R.id.imgDamMay3);
         tvphepcong = findViewById(R.id.tvPhepCong);
+        imgLoa = findViewById(R.id.imgLoaPhepCong);
+        ManHinhChaoActivity.mediaPlayer.start();
         //Chuyển màn hình
         DialogHDLam();
         //Quay lại:
-        Log.e("AAAA", "" + Tong);
-
-        myRandomDapAn(Tong);
+        imgLoa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (flag) {
+                    ManHinhChaoActivity.mediaPlayer.start();
+                    imgLoa.setImageResource(R.drawable.hinhloa);
+                    flag = false;
+                } else {
+                    ManHinhChaoActivity.mediaPlayer.pause();
+                    imgLoa.setImageResource(R.drawable.unloa);
+                    flag = true;
+                }
+            }
+        });
         imgDA1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -110,6 +125,7 @@ public class PhepCongActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intentQuayLai = new Intent(PhepCongActivity.this, CongTruActivity.class);
+                ManHinhChaoActivity.mediaPlayer.pause();
                 startActivity(intentQuayLai);
             }
         });
@@ -137,7 +153,7 @@ public class PhepCongActivity extends AppCompatActivity {
     public int myRandomso1() {
         int so1;
         Random random = new Random();
-        so1 = random.nextInt(6);
+        so1 = random.nextInt(10);
         switch (so1) {
             case 0:
                 imgs1.setImageResource(R.drawable.so0);
@@ -157,6 +173,18 @@ public class PhepCongActivity extends AppCompatActivity {
             case 5:
                 imgs1.setImageResource(R.drawable.so5);
                 break;
+            case 6:
+                imgs1.setImageResource(R.drawable.so6);
+                break;
+            case 7:
+                imgs1.setImageResource(R.drawable.so7);
+                break;
+            case 8:
+                imgs1.setImageResource(R.drawable.so8);
+                break;
+            case 9:
+                imgs1.setImageResource(R.drawable.so9);
+                break;
         }
         return so1;
     }
@@ -164,7 +192,7 @@ public class PhepCongActivity extends AppCompatActivity {
     public int myRandomso2() {
         int so2;
         Random random = new Random();
-        so2 = random.nextInt(5);
+        so2 = random.nextInt(10);
         switch (so2) {
             case 0:
                 imgs2.setImageResource(R.drawable.so0);
@@ -180,6 +208,21 @@ public class PhepCongActivity extends AppCompatActivity {
                 break;
             case 4:
                 imgs2.setImageResource(R.drawable.so4);
+                break;
+            case 5:
+                imgs2.setImageResource(R.drawable.so5);
+                break;
+            case 6:
+                imgs2.setImageResource(R.drawable.so6);
+                break;
+            case 7:
+                imgs2.setImageResource(R.drawable.so7);
+                break;
+            case 8:
+                imgs2.setImageResource(R.drawable.so8);
+                break;
+            case 9:
+                imgs2.setImageResource(R.drawable.so9);
                 break;
         }
         return so2;
@@ -235,38 +278,48 @@ public class PhepCongActivity extends AppCompatActivity {
     }
 
     public void Service() {
-        Tong = myRandomso1() + myRandomso2();
+        do {
+            Log.e("AAA","SO1: "+myRandomso1());
+            Log.e("BBB","SO2: "+myRandomso2());
+            Tong =  myRandomso1() + myRandomso2();
+        } while (Tong >=10);
         myRandomDapAn(Tong);
         Log.e("BBB", "tong 3:  " + Tong);
         i++;
-        tvphepcong.setText("Câu " + i + "/10");
-        if (i > 10) {
+        tvphepcong.setText("Câu " + i + "/15");
+        if (i > 15) {
             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(PhepCongActivity.this);
-            final View view1 = LayoutInflater.from(PhepCongActivity.this).inflate(R.layout.dialog_hdpheptru,null);
+            final View view1 = LayoutInflater.from(PhepCongActivity.this).inflate(R.layout.dialog_ket_qua, null);
             alertDialogBuilder.setCancelable(false);
             alertDialogBuilder.setView(view1);
-            alertDialogBuilder
-                    .setMessage("Bấm để chọn")
-                    .setCancelable(false)
-                    .setPositiveButton("Quay Lại", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            Intent intent = new Intent(PhepCongActivity.this, CongTruActivity.class);
-                            startActivity(intent);
-                        }
-                    })
-                    .setNegativeButton("Chơi Lại >>>", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            i = 1;
-                            tvphepcong.setText("Câu " + i + "/10");
-                            dialog.cancel();
-                        }
-                    });
-
             AlertDialog alertDialog = alertDialogBuilder.create();
             alertDialog.show();
+            Button choiLai = view1.findViewById(R.id.Again);
+            Button quayLai = view1.findViewById(R.id.menu);
+            TextView cauDung = view1.findViewById(R.id.tvCauDung);
+            TextView cauSai = view1.findViewById(R.id.tvCauSai);
+            cauDung.setText("Số câu đúng: "+dung);
+            cauSai.setText("Số câu sai: "+sai);
+            choiLai.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    i = 1;
+                    dung =0;
+                    sai = 0;
+                    tvphepcong.setText("Câu " + i + "/15");
+                    alertDialog.cancel();
+                }
+            });
+            quayLai.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(PhepCongActivity.this,ManHinhChinhActivity.class);
+                    startActivity(intent);
+                }
+            });
+
         }
-        Log.e("AAA","Đúng: "+dung);
-        Log.e("AAA","Sai: "+sai);
+        Log.e("AAA", "Đúng: " + dung);
+        Log.e("AAA", "Sai: " + sai);
     }
 }

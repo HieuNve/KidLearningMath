@@ -16,9 +16,6 @@ public class MHChaoGameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
-
-
-
         btnBDG = findViewById(R.id.btnBatDauGame);
         btnBDG.setOnClickListener(new View.OnClickListener() {
             @Override
