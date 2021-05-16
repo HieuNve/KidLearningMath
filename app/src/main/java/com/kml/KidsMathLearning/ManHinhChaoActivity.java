@@ -54,7 +54,6 @@ public class ManHinhChaoActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ManHinhChaoActivity.this, ManHinhChinhActivity.class);
-                mediaPlayer.pause();
                 startActivity(intent);
             }
         });
@@ -90,17 +89,6 @@ public class ManHinhChaoActivity extends AppCompatActivity {
         });
     }
 
-    public int PlayAction() {
-        mediaPlayer.start();
-        return 1;
-    }
-
-//    public int pauseAction() {
-//        mediaPlayer.pause();
-//        imgLoa.setImageResource(R.drawable.unloa);
-//        return -1;
-//    }
-
     private class MyRunnable extends Thread {
         @Override
         public void run() {
@@ -109,7 +97,8 @@ public class ManHinhChaoActivity extends AppCompatActivity {
                 imgLogo = findViewById(R.id.imgLogoKML);
                 Animation animation = AnimationUtils.loadAnimation(ManHinhChaoActivity.this, R.anim.demo);
                 imgLogo.startAnimation(animation);
-                PlayAction();
+                mediaPlayer.start();
+
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

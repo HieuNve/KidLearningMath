@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class ManHinhChinhActivity extends AppCompatActivity {
     ImageView imgHome,imgLoaManHinhChinh;
+    ImageView imgCT,imgDV,imgTD,imgGT;
     FrameLayout frameLayoutCongTru, frameLayoutDoVui, frameLayoutTapDem, frameLayoutGiaiTri;
     static boolean flag = false;
     @Override
@@ -17,8 +18,11 @@ public class ManHinhChinhActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_man_hinh_chinh);
         //Ánh xạ
-        ManHinhChaoActivity.mediaPlayer.start();
         imgHome = findViewById(R.id.imgHome);
+        imgCT = findViewById(R.id.imgCongTru);
+        imgDV = findViewById(R.id.imgDoVui);
+        imgTD = findViewById(R.id.imgTapDem);
+        imgGT = findViewById(R.id.imgGiaiTri);
         imgLoaManHinhChinh = findViewById(R.id.imgLoaMHChinh);
         frameLayoutCongTru = findViewById(R.id.frameLOCongtru);
         frameLayoutDoVui = findViewById(R.id.frameLODoVui);
@@ -42,9 +46,9 @@ public class ManHinhChinhActivity extends AppCompatActivity {
         imgHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intentHome = new Intent(ManHinhChinhActivity.this, ManHinhChaoActivity.class);
+                Intent intent = new Intent(ManHinhChinhActivity.this, ManHinhChaoActivity.class);
                 ManHinhChaoActivity.mediaPlayer.pause();
-                startActivity(intentHome);
+                startActivity(intent);
             }
         });
         //Cộng trừ
@@ -52,6 +56,7 @@ public class ManHinhChinhActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intentCongTru = new Intent(ManHinhChinhActivity.this, CongTruActivity.class);
+                imgCT.setImageResource(R.drawable.anhxanh);
                 startActivity(intentCongTru);
             }
         });
@@ -59,25 +64,30 @@ public class ManHinhChinhActivity extends AppCompatActivity {
         frameLayoutDoVui.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intentCongTru = new Intent(ManHinhChinhActivity.this, DoVuiActivity.class);
-                startActivity(intentCongTru);
+                Intent intentDoVui = new Intent(ManHinhChinhActivity.this, DoVuiActivity.class);
+                imgDV.setImageResource(R.drawable.anhxanh);
+                ManHinhChaoActivity.mediaPlayer.pause();
+                startActivity(intentDoVui);
             }
         });
         //Tập đếm
         frameLayoutTapDem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intentCongTru = new Intent(ManHinhChinhActivity.this, TapDemActivity.class);
+                Intent intentTapDem = new Intent(ManHinhChinhActivity.this, TapDemActivity.class);
+                imgTD.setImageResource(R.drawable.anhxanh);
                 ManHinhChaoActivity.mediaPlayer.pause();
-                startActivity(intentCongTru);
+                startActivity(intentTapDem);
             }
         });
         //Giải trí
         frameLayoutGiaiTri.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intentCongTru = new Intent(ManHinhChinhActivity.this, MHChaoGameActivity.class);
-                startActivity(intentCongTru);
+                Intent intentGiaiTri = new Intent(ManHinhChinhActivity.this, MHChaoGameActivity.class);
+                imgGT.setImageResource(R.drawable.anhxanh);
+                ManHinhChaoActivity.mediaPlayer.pause();
+                startActivity(intentGiaiTri);
             }
         });
 

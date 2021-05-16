@@ -25,7 +25,7 @@ public class TapDemActivity extends AppCompatActivity {
     private MediaPlayer mediaPlayer8;
     private MediaPlayer mediaPlayer9;
     private MediaPlayer mediaPlayer0;
-
+    public static MediaPlayer mediaPlayer10;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +44,7 @@ public class TapDemActivity extends AppCompatActivity {
         imgSo8 = findViewById(R.id.imgSo8TapDem);
         imgSo9 = findViewById(R.id.imgSo9TapDem);
         imgSo0 = findViewById(R.id.imgSo0TapDem);
+        imageViewQuayLai = findViewById(R.id.imgQuayLaiCuaMHTapDem);
         mediaPlayer = MediaPlayer.create(this, R.raw.amthanhso1);
         mediaPlayer2 = MediaPlayer.create(this, R.raw.amthanhso2);
         mediaPlayer3 = MediaPlayer.create(this, R.raw.amthanhso3);
@@ -54,8 +55,8 @@ public class TapDemActivity extends AppCompatActivity {
         mediaPlayer8 = MediaPlayer.create(this, R.raw.amthanhso8);
         mediaPlayer9 = MediaPlayer.create(this, R.raw.amthanhso9);
         mediaPlayer0 = MediaPlayer.create(this, R.raw.anhthanhso0);
-        imageViewQuayLai = findViewById(R.id.imgQuayLaiCuaMHTapDem);
-
+        mediaPlayer10 = MediaPlayer.create(this, R.raw.amthanhhuongdantapdem);
+        mediaPlayer10.start();
         imgSo0.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -155,7 +156,6 @@ public class TapDemActivity extends AppCompatActivity {
         alertDialogBuilder.setView(R.layout.dialod_hdtapdem);
         alertDialogBuilder.setTitle("Hướng dẫn");
         alertDialogBuilder
-                .setMessage("Bấm để chọn")
                 .setCancelable(false)
                 .setNegativeButton("Tiếp tục", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {

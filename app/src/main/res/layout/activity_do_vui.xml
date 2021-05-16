@@ -13,7 +13,7 @@
         android:layout_height="150dp"
         android:layout_gravity="bottom|center"
         android:fontFamily="sans-serif-medium"
-        android:text="Thùy có 5 đôi găng tay, Thùy cho chị 3 đôi. Hỏi Thùy còn bao nhiêu chiếc găng tay ?"
+        android:text="Thùy có 5 đôi găng tay, Thùy cho chị 3 đôi. Hỏi Thùy còn bao nhiêu đôi găng tay ?"
         android:textColor="#2C80A5"
         android:textSize="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -115,17 +115,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
-    <ImageView
-        android:id="@+id/imgLoaDoVui"
-        android:layout_width="55dp"
-        android:layout_height="55dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.02"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.956"
-        app:srcCompat="@drawable/hinhloa" />
 
     <TextView
         android:id="@+id/tvDoVui"

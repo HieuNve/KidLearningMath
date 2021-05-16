@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#123"
+    android:background="#DA112233"
     android:gravity="center"
     android:orientation="vertical"
     tools:context=".MHChinhGameActivity">
@@ -20,7 +20,7 @@
             android:layout_gravity="center"
             android:text="2048"
             android:textColor="#ddd"
-            android:textSize="50dp"
+            android:textSize="45dp"
             android:textStyle="bold" />
     </LinearLayout>
 
@@ -348,13 +348,14 @@
                         android:id="@+id/diemcao"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="1204"
+                        android:text="0"
                         android:textColor="#fff"
                         android:textSize="20dp" />
                 </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
+                android:layout_marginTop="40dp"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -389,8 +390,8 @@
                         android:src="@drawable/exitgame" />
                 </LinearLayout>
             </LinearLayout>
-
         </LinearLayout>
     </LinearLayout>
+
 
 </LinearLayout>

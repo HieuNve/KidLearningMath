@@ -2,6 +2,7 @@ package com.kml.KidsMathLearning;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -23,6 +24,7 @@ public class PhepTruActivity extends AppCompatActivity {
     int dung;
     int sai;
     static boolean flag = false;
+    public static MediaPlayer mediaPlayer,mediaPlayer2,mediaPlayer3,mediaPlayer4,mediaPlayer5;
     TextView tvpheptru;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +41,11 @@ public class PhepTruActivity extends AppCompatActivity {
         imgDamMay3PT = findViewById(R.id.imgDamMay3PT);
         tvpheptru = findViewById(R.id.tvPhepTru);
         imgLoa  = findViewById(R.id.imgLoaPhepTru);
-        ManHinhChaoActivity.mediaPlayer.start();
+        mediaPlayer = MediaPlayer.create(this, R.raw.amthanhhuongdan);
+        mediaPlayer3 = MediaPlayer.create(this, R.raw.amthanhdung);
+        mediaPlayer4 = MediaPlayer.create(this, R.raw.amthanhsai);
+        mediaPlayer5 = MediaPlayer.create(this, R.raw.chucmung);
+        mediaPlayer.start();
         imgLoa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -60,6 +66,7 @@ public class PhepTruActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (Tong == 0 || Tong == 3 || Tong == 6 || Tong == 9) {
+                    mediaPlayer3.start();
                     imgDamMay1PT.setImageResource(R.drawable.anhxanh);
                     imgDamMay2PT.setImageResource(R.drawable.maydo);
                     imgDamMay3PT.setImageResource(R.drawable.maydo);
@@ -67,6 +74,7 @@ public class PhepTruActivity extends AppCompatActivity {
                     PhepTruActivity.MyRunnable myRunnable = new PhepTruActivity.MyRunnable();
                     myRunnable.start();
                 } else {
+                    mediaPlayer4.start();
                     imgDamMay1PT.setImageResource(R.drawable.maydo);
                     sai++;
                     PhepTruActivity.MyRunnable myRunnable = new PhepTruActivity.MyRunnable();
@@ -80,6 +88,7 @@ public class PhepTruActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (Tong == 1 || Tong == 4 || Tong == 7) {
+                    mediaPlayer3.start();
                     imgDamMay2PT.setImageResource(R.drawable.anhxanh);
                     imgDamMay1PT.setImageResource(R.drawable.maydo);
                     imgDamMay3PT.setImageResource(R.drawable.maydo);
@@ -87,6 +96,7 @@ public class PhepTruActivity extends AppCompatActivity {
                     PhepTruActivity.MyRunnable myRunnable = new PhepTruActivity.MyRunnable();
                     myRunnable.start();
                 } else {
+                    mediaPlayer4.start();
                     imgDamMay2PT.setImageResource(R.drawable.maydo);
                     sai++;
                     PhepTruActivity.MyRunnable myRunnable = new PhepTruActivity.MyRunnable();
@@ -99,6 +109,7 @@ public class PhepTruActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (Tong == 2 || Tong == 5 || Tong == 8) {
+                    mediaPlayer3.start();
                     imgDamMay3PT.setImageResource(R.drawable.anhxanh);
                     imgDamMay2PT.setImageResource(R.drawable.maydo);
                     imgDamMay1PT.setImageResource(R.drawable.maydo);
@@ -106,6 +117,7 @@ public class PhepTruActivity extends AppCompatActivity {
                     PhepTruActivity.MyRunnable myRunnable = new PhepTruActivity.MyRunnable();
                     myRunnable.start();
                 } else {
+                    mediaPlayer4.start();
                     imgDamMay3PT.setImageResource(R.drawable.maydo);
                     sai++;
                     PhepTruActivity.MyRunnable myRunnable = new PhepTruActivity.MyRunnable();
@@ -119,9 +131,33 @@ public class PhepTruActivity extends AppCompatActivity {
         imageViewQuayLai.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intentQuayLai = new Intent(PhepTruActivity.this, CongTruActivity.class);
                 ManHinhChaoActivity.mediaPlayer.pause();
-                startActivity(intentQuayLai);
+                mediaPlayer2 = MediaPlayer.create(PhepTruActivity.this, R.raw.quaylai);
+                mediaPlayer2.start();
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(PhepTruActivity.this);
+                alertDialogBuilder.setView(R.layout.dialog_quay_lai);
+                alertDialogBuilder.setTitle("Bé chắc chứ ?");
+                alertDialogBuilder
+                        .setCancelable(false)
+                        .setNegativeButton("Quay lại", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                Intent intentQuayLai = new Intent(PhepTruActivity.this, CongTruActivity.class);
+                                ManHinhChaoActivity.mediaPlayer.start();
+                                mediaPlayer2.pause();
+                                startActivity(intentQuayLai);
+                            }
+                        })
+                        .setPositiveButton("Hủy", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                ManHinhChaoActivity.mediaPlayer.start();
+                                mediaPlayer2.pause();
+                                dialogInterface.cancel();
+                            }
+                        });
+
+                AlertDialog alertDialog = alertDialogBuilder.create();
+                alertDialog.show();
             }
         });
     }
@@ -257,10 +293,11 @@ public class PhepTruActivity extends AppCompatActivity {
         alertDialogBuilder.setView(R.layout.dialog_hdpheptru);
         alertDialogBuilder.setTitle("Hướng dẫn");
         alertDialogBuilder
-                .setMessage("Bấm để chọn")
                 .setCancelable(false)
                 .setNegativeButton("Tiếp tục", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
+                        ManHinhChaoActivity.mediaPlayer.start();
+                        mediaPlayer.pause();
                         dialog.cancel();
                     }
                 });
@@ -277,6 +314,10 @@ public class PhepTruActivity extends AppCompatActivity {
         i++;
         tvpheptru.setText("Câu " + i + "/15");
         if (i > 15) {
+            tvpheptru.setText("Kết thúc");
+            ManHinhChaoActivity.mediaPlayer.pause();
+            mediaPlayer5.start();
+            tvpheptru.setText("Kết thúc");
             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(PhepTruActivity.this);
             final View view1 = LayoutInflater.from(PhepTruActivity.this).inflate(R.layout.dialog_ket_qua, null);
             alertDialogBuilder.setCancelable(false);
@@ -297,13 +338,18 @@ public class PhepTruActivity extends AppCompatActivity {
                     sai = 0;
                     tvpheptru.setText("Câu " + i + "/15");
                     alertDialog.cancel();
+                    ManHinhChaoActivity.mediaPlayer.start();
+                    mediaPlayer5.pause();
                 }
             });
             quayLai.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(PhepTruActivity.this,ManHinhChinhActivity.class);
+                    ManHinhChaoActivity.mediaPlayer.start();
+                    mediaPlayer5.pause();
                     startActivity(intent);
+
                 }
             });
 
